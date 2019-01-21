@@ -9,7 +9,7 @@ La clase median Filter emplea una excepción en el caso de que el tamaño de la 
 ### Constructor
 El filtro de mediana móvil se instancia a través de su constructor que recibe el tamaño de la ventana como único parámetro.
 ```c++
-medianFilter<T> medianFilter(windowSize);
+MedianFilter<T> medianFilter(windowSize);
 ```
 
 ### Uso del filtro
