@@ -1,4 +1,4 @@
-# Arduino Median Filter Library
+# Arduino Median Filter Library 2
 The median filter library implements a moving median filter. The library stores the last N elements of the window and calculates the median. The class uses templates to allow working with different types (int, long, float, ...). <br />
 More information https://www.luisllamas.es/libreria-arduino-median-filter/
 
