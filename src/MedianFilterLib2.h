@@ -7,8 +7,8 @@ Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License
  ****************************************************/
 
-#ifndef _MedianFilterLib_h
-#define _MedianFilterLib_h
+#ifndef _MedianFilter2Lib_h
+#define _MedianFilter2Lib_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 #include <Arduino.h>
@@ -17,13 +17,13 @@ Unless required by applicable law or agreed to in writing, software distributed 
 #endif
 
 template <typename T>
-class MedianFilter
+class MedianFilter2
 {
 
-typedef T (MedianFilter::*Action)(T);
+typedef T (MedianFilter2::*Action)(T);
 
 public:
-	MedianFilter<T>(const size_t windowSize);
+	MedianFilter2<T>(const size_t windowSize);
 	T AddValue(T item);
 	T GetFiltered() const;
 
@@ -52,7 +52,7 @@ private:
 
 
 template<typename T>
-MedianFilter<T>::MedianFilter(const size_t windowSize)
+MedianFilter2<T>::MedianFilter2(const size_t windowSize)
 {
 	_windowSize = windowSize;
 	_buffer = new node[windowSize];
@@ -62,25 +62,25 @@ MedianFilter<T>::MedianFilter(const size_t windowSize)
 	_bigger = { &_smaller, 0 };
 
 	if(_windowSize == 3)
-		addValue = &MedianFilter::addValue3;
+		addValue = &MedianFilter2::addValue3;
 	else
-		addValue = &MedianFilter::addValueN;
+		addValue = &MedianFilter2::addValueN;
 }
 
 template<typename T>
-T MedianFilter<T>::AddValue(T value)
+T MedianFilter2<T>::AddValue(T value)
 {
 	return (*this.*addValue)(value);
 }
 
 template<typename T>
-T MedianFilter<T>::GetFiltered() const
+T MedianFilter2<T>::GetFiltered() const
 {
 	return _lastFiltered;
 }
 
 template<typename T>
-T MedianFilter<T>::addValueN(T value)
+T MedianFilter2<T>::addValueN(T value)
 {
 	struct node *_successor;
 	struct node *_accessor; 
@@ -148,7 +148,7 @@ T MedianFilter<T>::addValueN(T value)
 }
 
 template<typename T>
-T MedianFilter<T>::addValue3(T value)
+T MedianFilter2<T>::addValue3(T value)
 {
 	if ((++_iterator - _buffer) >= 3)
 		_iterator = _buffer;
@@ -158,7 +158,7 @@ T MedianFilter<T>::addValue3(T value)
 }
 	
 template<typename T>
-T MedianFilter<T>::median3(T a, T b, T c)
+T MedianFilter2<T>::median3(T a, T b, T c)
 {
 	if ((a <= b) && (a <= c))
 		return (b <= c) ? b : c;
