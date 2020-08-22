@@ -1,30 +1,30 @@
-# Librería Arduino Median Filter
-La librería median Filter implementa un filtro de mediana móvil. La librería almacena los N últimos elementos de la ventana y calcula la mediana. La clase emplea templates para permitir funcionar con distintos tipos (int, long, float,…). <br />
-Más información https://www.luisllamas.es/libreria-arduino-median-filter/
+# Arduino Median Filter Library
+The median filter library implements a moving median filter. The library stores the last N elements of the window and calculates the median. The class uses templates to allow working with different types (int, long, float, ...). <br />
+More information https://www.luisllamas.es/libreria-arduino-median-filter/
 
-## Instrucciones de uso
-La clase median Filter sigue el algoritmo propuesto por Phil Ekstrom para el cálculo rápido del filtro mediana. Emplea un buffer circular para almacenar los valores por antigüedad junto con una linkedlist para mantener el orden de los elementos. <br />
-La clase median Filter emplea una excepción en el caso de que el tamaño de la ventana sea igual a 3, empleando una implementación directa para mejorar la eficiencia. Para tamaño de ventana distinto de 3 se emplea el algoritmo genérico.
+## Instructions for use
+The median filter class follows the algorithm proposed by Phil Ekstrom for the quick calculation of the median filter. It uses a circular buffer to store the values by age together with a linkedlist to maintain the order of the elements. <br />
+The median Filter class uses an exception in the case that the window size is equal to 3, using a straightforward implementation to improve efficiency. For window size other than 3 the generic algorithm is used.
 
 ### Constructor
-El filtro de mediana móvil se instancia a través de su constructor que recibe el tamaño de la ventana como único parámetro.
+The moving median filter is instantiated through its constructor that receives the window size as the only parameter.
 ```c++
 MedianFilter<T> medianFilter(windowSize);
 ```
 
-### Uso del filtro
+### Using the filter
 ```c++
-// Añadir un nuevo valor al filtro y devolver el valor filtrado
+// Add a new value to the filter and return the filtered value
 medianFilter.AddValue(value);
  
-//Obtiene el ultimo valor filtrado (el mismo que el devuelto al añadir el valor al filtro)
+// Get the last filtered value (the same as the one returned when adding the value to the filter)
 medianFilter.GetFiltered();
 ```
 
 
-## Ejemplos
-La librería Median Filter incluye los siguientes ejemplos para ilustrar su uso.
-* MedianFilterInt: Ejemplo de filtrado para variables integer.
+## Examples
+The median filter library includes the following examples to illustrate its use.
+* MedianFilterInt: Example of filtering for integer variables.
 ```c++
 #include "MedianFilterLib.h"
 
@@ -66,7 +66,7 @@ void loop()
 }
 ```
 
-* MedianFilterFloat: Ejemplo de filtrado para variables float.
+* MedianFilterFloat: Filtering example for float variables.
 ```c++
 #include "MedianFilterLib.h"
 
