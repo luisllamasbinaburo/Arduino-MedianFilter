@@ -5,7 +5,7 @@
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
-MedianFilter	KEYWORD1
+MedianFilter2	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
