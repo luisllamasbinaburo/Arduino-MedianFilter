@@ -24,17 +24,18 @@ typedef T (MedianFilter2::*Action)(T);
 
 public:
 	MedianFilter2<T>(const size_t windowSize);
+
 	T AddValue(T item);
 	T GetFiltered() const;
 
 private:
 	struct node
 	{
-		struct node *next;      // Apunta al siguiente elemento en orden
+		struct node *next;      // Point to the next element in order (Apunta al siguiente elemento en orden)
 		T value;
 	};
 
-	Action addValue;			// Puntero para permitir cambiar entra algoritmo 3 o N
+	Action addValue;			// Pointer to allow switching between algorithm 3 or N (Puntero para permitir cambiar entra algoritmo 3 o N)
 	T addValue3(T item);
 	T addValueN(T item);
 	T median3(T a, T b, T c);
@@ -43,7 +44,7 @@ private:
 	T _lastFiltered;
 
 	const static int _stopper = 0;
-	struct node *_buffer;		// Buffer para los elementos por orden de llegada
+	struct node *_buffer;		// Buffer for items in order of arrival (Buffer para los elementos por orden de llegada)
 	struct node *_iterator; 
 
 	struct node _smaller;
@@ -107,7 +108,7 @@ T MedianFilter2<T>::addValueN(T value)
 
 	for (int iCount = 0; iCount < _windowSize; ++iCount)
 	{
-		// Gestion de elementos impares
+		// Management of odd elements (Gestion de elementos impares)
 		if (_accessor->next == _iterator)
 			_accessor->next = _successor;
 
@@ -125,7 +126,7 @@ T MedianFilter2<T>::addValueN(T value)
 		_accessorPrev = _accessor;  
 		_accessor = _accessor->next;
 
-		// Gestion de elementos pares
+		// Management of even elements (Gestion de elementos pares)
 		if (_accessor->next == _iterator)
 			_accessor->next = _successor;
 
