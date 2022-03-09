@@ -25,6 +25,9 @@ typedef T (MedianFilter2::*Action)(T);
 public:
 	MedianFilter2<T>(const size_t windowSize);
 
+	~MedianFilter2<T>(); // prototype the destructor
+
+
 	T AddValue(T item);
 	T GetFiltered() const;
 
@@ -66,6 +69,12 @@ MedianFilter2<T>::MedianFilter2(const size_t windowSize)
 		addValue = &MedianFilter2::addValue3;
 	else
 		addValue = &MedianFilter2::addValueN;
+}
+
+// implement the desructor
+template<typename T>
+MedianFilter2<T>::~MedianFilter2() {
+	delete [] _buffer;
 }
 
 template<typename T>
