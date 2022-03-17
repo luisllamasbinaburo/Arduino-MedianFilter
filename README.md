@@ -1,7 +1,7 @@
 # Arduino Median Filter Library 2
 The median filter library implements a moving median filter. The library stores the last N elements of the window and calculates the median. The class uses templates to allow working with different types (int, long, float, ...). <br />
 More information https://www.luisllamas.es/libreria-arduino-median-filter/ <br>
-English translation: https://www-luisllamas-es.translate.goog/libreria-arduino-median-filter/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp 
+[English translation](https://www-luisllamas-es.translate.goog/libreria-arduino-median-filter/?_x_tr_sl=auto&_x_tr_tl=en&_x_tr_hl=en-US&_x_tr_pto=wapp)
 
 ## Instructions for use
 The median filter class follows the algorithm proposed by Phil Ekstrom for the quick calculation of the median filter. It uses a circular buffer to store the values by age together with a linkedlist to maintain the order of the elements. <br />
