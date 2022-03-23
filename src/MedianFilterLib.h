@@ -24,6 +24,8 @@ typedef T (MedianFilter::*Action)(T);
 
 public:
 	MedianFilter<T>(const size_t windowSize);
+	~MedianFilter<T>();
+	
 	T AddValue(T item);
 	T GetFiltered() const;
 
@@ -65,6 +67,12 @@ MedianFilter<T>::MedianFilter(const size_t windowSize)
 		addValue = &MedianFilter::addValue3;
 	else
 		addValue = &MedianFilter::addValueN;
+}
+
+template<typename T>
+MedianFilter<T>::~MedianFilter()
+{
+	delete [] _buffer;
 }
 
 template<typename T>
